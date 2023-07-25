@@ -45,8 +45,10 @@ const updateChart = () => {
 const tmpArr: any[] = []
 const deviceInfo = ref<string>('')
 
-ipcRenderer.on('ping', async (event, cpuInfo) => {
+ipcRenderer.on('ping', async (event, cpuInfo,freeInfo) => {
   console.log('接收主线程传递的数据--', cpuInfo)
+  console.log(freeInfo);
+  
   deviceInfo.value = cpuInfo[0].model
 
   const cpuUsage = await osUtils.getCPUUsage({ percentage: true });

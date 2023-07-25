@@ -1,5 +1,7 @@
 <div align="center"> 
 
+<!-- 启动时自动打开了废水应用 修改默认启动端口 8080  -->
+
 # Electron Vue Template
   
 <img width="794" alt="image" src="https://user-images.githubusercontent.com/32544586/222748627-ee10c9a6-70d2-4e21-b23f-001dd8ec7238.png">

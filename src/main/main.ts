@@ -24,14 +24,14 @@ function createWindow () {
 app.whenReady().then(() => {
   createWindow();
 
-  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-    callback({
-      responseHeaders: {
-        ...details.responseHeaders,
-        'Content-Security-Policy': ['script-src \'self\'']
-      }
-    })
-  })
+  // session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+  //   callback({
+  //     responseHeaders: {
+  //       ...details.responseHeaders,
+  //       // 'Content-Security-Policy': ['script-src \'self\'']
+  //     }
+  //   })
+  // })
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
@@ -47,8 +47,7 @@ app.on('window-all-closed', function () {
 });
 
 ipcMain.on('message', (event, message) => {
-  console.log(message);
   setInterval(()=>{
-    event.sender.send('ping', os.cpus());
+    event.sender.send('ping', os.cpus(),os.freemem()/1024/1024);
   },1000)
 })
